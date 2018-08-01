@@ -6,6 +6,7 @@ import re
 import ssl
 from django.views.decorators.cache import cache_page
 
+@cache_page(60 * 60 * 24)
 def show_info(request, url):
 	gcontext = ssl.SSLContext(ssl.PROTOCOL_TLSv1)
 	req = Request(url, headers={'User-Agent' : "Magic Browser"}) 
@@ -70,8 +71,7 @@ def show_info(request, url):
 	for item in soup.findAll('button', {"class": re.compile("log")}):
 		form.append(item)
 
-	for item in soup.findAll('a'):
-		print(item)
+	for item in soup.findAll('a', attrs={'href': re.compile("log")}):
 		form.append(item)
 
 	if len(form) > 0:
