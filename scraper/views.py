@@ -35,7 +35,9 @@ def show_info(request, url):
 			version = 'html 5'
 
 		# Find title
-		title = soup.title.string
+		title = ""
+		for item in soup.find('title'):
+			title = item.string
 
 		# Count the headings
 		list_of_headings = []
@@ -96,4 +98,4 @@ def show_info(request, url):
 	except URLError as e:
 		return HttpResponse("URL error", e)
 
-		
+
