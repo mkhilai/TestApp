@@ -1,0 +1,12 @@
+<p>HTML version: {{ doctype }}</p>
+<p>Title: {{ title }}</p>
+<p>Number of external links: {{ number_of_ext_links }}</p>
+<p>Number of internal links: {{ number_of_int_links }}</p>
+<p>Number of inaccessible links: {{ number_of_inacc_links }}</p>
+<p>Number of headings: {{ number_of_headings }}</p>
+<p>Heading:
+	{% for item in headings %}
+		{{ item }}
+	{% endfor %}
+</p>
+<p>Page has login form: {{ contains_login }}</p>
